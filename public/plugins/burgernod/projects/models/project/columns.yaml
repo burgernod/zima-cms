@@ -1,0 +1,64 @@
+# ===================================
+#  List Column Definitions
+# ===================================
+
+columns:
+  id:
+    label: ID
+    searchable: false
+    sortable: true
+
+  locale:
+    label: Language
+    options:
+      en: EN
+      ru: RU
+      kk: KZ
+      zh-CN: CN
+    width: 80px
+
+  title:
+    label: Title
+    searchable: true
+    sortable: true
+
+  slug:
+    label: Slug
+    searchable: true
+    sortable: true
+
+  client:
+    label: Client
+    searchable: true
+    sortable: true
+
+  location:
+    label: Location
+    searchable: true
+    sortable: true
+
+  budget:
+    label: Budget
+    searchable: true
+    sortable: true
+
+  year:
+    label: Year
+    sortable: true
+    type: number
+
+  categories:
+    label: Categories
+    relation: categories
+    select: name
+    sortable: false
+
+  created_at:
+    label: Created
+    type: datetime
+    sortable: true
+
+  updated_at:
+    label: Updated
+    type: datetime
+    sortable: true

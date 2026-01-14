@@ -1,0 +1,48 @@
+title = "Services"
+url = "/services"
+layout = "default"
+is_hidden = 0
+
+[viewBag]
+localeUrl[zh-CN] = "/zh-CN/services"
+localeUrl[ru] = "/ru/services"
+localeUrl[kk] = "/kk/services"
+
+[serviceList]
+detailPage = "service"
+pageProperty = "services"
+limit = 0
+==
+
+<section class="prj-list-section layout_padding">
+    <div class="container">
+        <div class="prj-list-heading">
+            <h2>{{ 'Our <span>Services'|_ }} </span></h2>
+        </div>
+
+        <div class="prj-grid">
+            {% for s in serviceList.services %}
+                <article class="prj-card">
+                    <div class="prj-thumb">
+                        {% if s.thumb %}
+                            <img src="{{ s.thumb }}" alt="{{ s.title }}" loading="lazy">
+                            <div class="prj-thumb-overlay"></div>
+                        {% else %}
+                            <div class="prj-thumb-overlay"></div>
+                        {% endif %}
+
+                        <div class="prj-card-info">
+                            <h3>{{ s.title }}</h3>
+                        </div>
+                    </div>
+
+                    <a href="{{ s.url ?: (this.page.url|replace({'/services': '/service/' ~ s.slug})) }}" class="prj-card-link"></a>
+                </article>
+            {% else %}
+                <p>{{ 'Services not found'|_ }}</p>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+

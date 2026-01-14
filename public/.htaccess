@@ -1,0 +1,91 @@
+<IfModule mod_rewrite.c>
+
+    <IfModule mod_negotiation.c>
+        Options -MultiViews
+    </IfModule>
+
+    RewriteEngine On
+
+    ##
+    ## You may need to uncomment the following line for some hosting environments,
+    ## if you have installed to a subdirectory, enter the name here also.
+    ##
+    # RewriteBase /
+
+    ##
+    ## Uncomment following lines to force HTTPS.
+    ##
+    # RewriteCond %{HTTPS} off
+    # RewriteRule (.*) https://%{SERVER_NAME}/$1 [L,R=301]
+
+    ##
+    ## Paths explicitly blocked from being handled by the server
+    ##
+    RewriteRule ^bootstrap/.* index.php [L,NC]
+    RewriteRule ^config/.* index.php [L,NC]
+    RewriteRule ^vendor/.* index.php [L,NC]
+    RewriteRule ^storage/cms/.* index.php [L,NC]
+    RewriteRule ^storage/logs/.* index.php [L,NC]
+    RewriteRule ^storage/framework/.* index.php [L,NC]
+    RewriteRule ^storage/temp/protected/.* index.php [L,NC]
+    RewriteRule ^storage/app/uploads/protected/.* index.php [L,NC]
+
+    ##
+    ## Paths explicitly handled by the server
+    ##
+    RewriteCond %{REQUEST_FILENAME} -f
+    RewriteCond %{REQUEST_FILENAME} !/.well-known/*
+    RewriteCond %{REQUEST_FILENAME} !/storage/app/uploads/public/.*
+    RewriteCond %{REQUEST_FILENAME} !/storage/app/media/.*
+    RewriteCond %{REQUEST_FILENAME} !/storage/app/resized/.*
+    RewriteCond %{REQUEST_FILENAME} !/storage/temp/public/.*
+    RewriteCond %{REQUEST_FILENAME} !/themes/.*/(assets|resources)/.*
+    RewriteCond %{REQUEST_FILENAME} !/plugins/.*/(assets|resources)/.*
+    RewriteCond %{REQUEST_FILENAME} !/modules/.*/(assets|resources)/.*
+    RewriteRule !^index.php index.php [L,NC]
+
+    ##
+    ## Block all PHP files, except index
+    ##
+    RewriteCond %{REQUEST_FILENAME} -f
+    RewriteCond %{REQUEST_FILENAME} \.php$
+    RewriteRule !^index.php index.php [L,NC]
+
+    ##
+    ## Standard routes
+    ##
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteRule ^ index.php [L]
+
+    # === СКРЫТЬ АДМИНКУ ===
+    # Запрещаем прямой доступ к /backend
+    RewriteRule ^backend(/|$) - [F,L]
+
+    # Перенаправляем на новый путь: /admin-panel-2025
+    RewriteRule ^admin-panel-2025(.*)$ backend$1 [L,NC]
+</IfModule>
+# ==============================
+# БЕЗОПАСНЫЕ HTTP-ЗАГОЛОВКИ (ДОБАВЛЕНО)
+# ==============================
+<IfModule mod_headers.c>
+    Header set X-Frame-Options "DENY"
+    Header set X-Content-Type-Options "nosniff"
+    Header set X-XSS-Protection "1; mode=block"
+    Header set Referrer-Policy "strict-origin-when-cross-origin"
+    Header set Content-Security-Policy "default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self'; frame-src 'none'; object-src 'none';"
+</IfModule>
+
+# ==============================
+# ЗАЩИТА ФАЙЛОВ (ДОБАВЛЕНО)
+# ==============================
+<Files ~ "\.(env|log|ini|yml|yaml|git|lock)$">
+    Order allow,deny
+    Deny from all
+</Files>
+
+<Directory "storage/app/public">
+    <Files "*.php">
+        Order allow,deny
+        Deny from all
+    </Files>
+</Directory>

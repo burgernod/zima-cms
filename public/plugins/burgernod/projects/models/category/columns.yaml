@@ -1,0 +1,25 @@
+# ===================================
+#  List Column Definitions
+# ===================================
+
+columns:
+    id:
+        label: 'burgernod.projects::lang.models.general.id'
+        searchable: true
+    name:
+        label: Name
+        searchable: true
+    slug:
+        label: Slug
+        searchable: true
+    created_at:
+        label: 'burgernod.projects::lang.models.general.created_at'
+        type: datetime
+        searchable: true
+        sortable: true
+        invisible: true
+    updated_at:
+        label: 'burgernod.projects::lang.models.general.updated_at'
+        type: datetime
+        searchable: true
+        sortable: true

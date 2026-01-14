@@ -1,0 +1,13 @@
+{% for project in projects %}
+    <div class="project-item">
+        <h2>{{ project.title }}</h2>
+        <p>{{ project.description|slice(0, 100) }}...</p> <!-- Teaser text -->
+        <p>Client: {{ project.client }}</p>
+        <p>Location: {{ project.location }}</p>
+        <p>Categories: {% for category in project.categories %}{{ category.name }}{% if not loop.last %}, {% endif %}{% endfor %}</p>
+        {% if project.photos.count %}
+            <img src="{{ project.photos.first.thumb(200, auto) }}" alt="{{ project.title }}">
+        {% endif %}
+        <a href="/project/{{ project.slug }}">View Details</a>
+    </div>
+{% endfor %}

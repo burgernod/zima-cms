@@ -1,0 +1,188 @@
+[viewBag]
+snippetProperties[0][id] = -1
+
+[localePicker]
+forceUrl = 0
+==
+{% set homeUrls = ['/', '/ru/', '/kk/', '/zh-CN/', '/ru', '/kk', '/zh-CN'] %}
+
+<body{% if this.page.url not in homeUrls %} class="sub_page {{ activeLocale }}"{% endif %} class="{{ activeLocale }}">
+<div class="page-wrapper">
+
+<div class="hero_area">
+    <div class="bg-box">
+      <img src="{{ 'assets/images/hero-bg.jpg'|theme }}" alt="">
+    </div>
+    <!-- header section strats -->
+    <header class="header_section">
+      <div class="container">
+        <nav class="navbar navbar-expand-lg custom_nav-container ">
+          <a class="navbar-brand" href="{{ activeLocale == 'en' ? '/' : '/' ~ activeLocale }}">
+              <img src="{{ 'assets/images/logo3.png'|theme }}" alt="Logo">
+          </a>
+
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class=""> </span>
+          </button>
+
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mx-auto">
+                {% for item in staticMenu.menuItems ?? mainMenu.menuItems %}
+                    {% set css = item.viewBag.cssClass|default('') %}
+
+                    <li class="nav-item {{ css }} {{ this.page.url == item.url ? 'active' : '' }}">
+                        <a class="nav-link" href="{{ item.url }}">
+                            {{ item.title }}
+                            {% if this.page.url == item.url %}
+                                <span class="sr-only">(current)</span>
+                            {% endif %}
+                        </a>
+                    </li>
+                {% endfor %}
+            </ul>
+            <div class="language-switcher dropdown d-inline-block">
+                <button class="btn btn-sm dropdown-toggle text-white bg-transparent border-0 shadow-none" 
+                        type="button" 
+                        id="langDropdown" 
+                        data-toggle="dropdown" 
+                        aria-haspopup="true" 
+                        aria-expanded="false">
+                    {{ activeLocale|upper }}
+                </button>
+
+                <div class="dropdown-menu dropdown-menu-right">
+                    {% for code, name in locales %}
+                        {% if code != activeLocale %}
+
+                            {# ------------------------------ #
+                              PROJECT PAGE
+                              /project/:slug
+                            # ------------------------------ #}
+                            {% if this.page.id == 'project-details' and project %}
+
+                                {% set baseSlug = project.slug|replace({
+                                    '-en':'','-ru':'','-kk':'','-zh-cn':''
+                                }) %}
+
+                                {% set suffix = code == 'en' ? '-en' :
+                                                code == 'ru' ? '-ru' :
+                                                code == 'kk' ? '-kk' :
+                                                '-zh-cn' %}
+
+                                {% set newSlug = baseSlug ~ suffix %}
+
+                                <a class="dropdown-item"
+                                  href="#"
+                                  data-request="onSwitchLocaleProject"
+                                  data-request-data="locale: '{{ code }}', slug: '{{ newSlug|e('js') }}'">
+                                    {{ code|upper }} — {{ name }}
+                                </a>
+
+                            {# ------------------------------ #
+                              SERVICE PAGE
+                              /service/:slug
+                            # ------------------------------ #}
+                            {% elseif this.page.id == 'service-details' and service %}
+
+                                {% set baseSlug = service.slug|replace({
+                                    '-en':'','-ru':'','-kk':'','-zh-cn':''
+                                }) %}
+
+                                {% set suffix = code == 'en' ? '-en' :
+                                                code == 'ru' ? '-ru' :
+                                                code == 'kk' ? '-kk' :
+                                                '-zh-cn' %}
+
+                                {% set newSlug = baseSlug ~ suffix %}
+
+                                <a class="dropdown-item"
+                                  href="#"
+                                  data-request="onSwitchLocaleService"
+                                  data-request-data="locale: '{{ code }}', slug: '{{ newSlug|e('js') }}'">
+                                    {{ code|upper }} — {{ name }}
+                                </a>
+
+                            {# ------------------------------ #
+                              COMMUNITY PAGE
+                              /community/:slug
+                            # ------------------------------ #}
+                            {% elseif this.page.id == 'community-details' and community %}
+
+                                {% set baseSlug = community.slug|replace({
+                                    '-en':'','-ru':'','-kk':'','-zh-cn':''
+                                }) %}
+
+                                {% set suffix = code == 'en' ? '-en' :
+                                                code == 'ru' ? '-ru' :
+                                                code == 'kk' ? '-kk' :
+                                                '-zh-cn' %}
+
+                                {% set newSlug = baseSlug ~ suffix %}
+
+                                <a class="dropdown-item"
+                                  href="#"
+                                  data-request="onSwitchLocaleCommunity"
+                                  data-request-data="locale: '{{ code }}', slug: '{{ newSlug|e('js') }}'">
+                                    {{ code|upper }} — {{ name }}
+                                </a>
+
+                            {# ------------------------------ #
+                              LOCATION PAGE
+                              /location/:slug
+                            # ------------------------------ #}
+                            {% elseif this.page.id == 'location-details' and location %}
+
+                                {% set baseSlug = location.slug|replace({
+                                    '-en':'','-ru':'','-kk':'','-zh-cn':''
+                                }) %}
+
+                                {% set suffix = code == 'en' ? '-en' :
+                                                code == 'ru' ? '-ru' :
+                                                code == 'kk' ? '-kk' :
+                                                '-zh-cn' %}
+
+                                {% set newSlug = baseSlug ~ suffix %}
+
+                                <a class="dropdown-item"
+                                  href="#"
+                                  data-request="onSwitchLocaleLocation"
+                                  data-request-data="locale: '{{ code }}', slug: '{{ newSlug|e('js') }}'">
+                                    {{ code|upper }} — {{ name }}
+                                </a>
+
+                            {# ------------------------------ #
+                              DEFAULT BEHAVIOR (static pages)
+                            # ------------------------------ #}
+                            {% else %}
+
+                                <a class="dropdown-item"
+                                  href="#"
+                                  data-request="onSwitchLocale"
+                                  data-request-data="locale: '{{ code }}'">
+                                    {{ code|upper }} — {{ name }}
+                                </a>
+
+                            {% endif %}
+
+                        {% endif %}
+                    {% endfor %}
+                </div>
+
+
+            </div>
+            <div class="user_option">
+              <a href="https://www.youtube.com/@isker_group" target="_blank">
+                <i class="fa fa-youtube-play" aria-hidden="true"></i>
+              </a>
+              <a href="https://www.linkedin.com/company/2089949/" target="_blank">
+                <i class="fa fa-linkedin" aria-hidden="true"></i>
+              </a>
+            </div>
+          </div>
+        </nav>
+      </div>
+    </header>
+    <!-- end header section -->
+{% if this.page.url not in homeUrls %}
+  </div>
+{% endif %}

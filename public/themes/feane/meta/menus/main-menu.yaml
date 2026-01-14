@@ -1,0 +1,458 @@
+items:
+    -
+        title: 'About Us'
+        nesting: null
+        type: url
+        url: /about
+        code: ''
+        reference: null
+        cmsPage: null
+        replace: null
+        viewBag:
+            locale:
+                zh-CN:
+                    title: ''
+                    url: ''
+                ru:
+                    title: ''
+                    url: ''
+                kk:
+                    title: ''
+                    url: ''
+            isHidden: '0'
+            cssClass: show-en
+            isExternal: '0'
+    -
+        title: Projects
+        nesting: null
+        type: url
+        url: /projects
+        code: ''
+        reference: null
+        cmsPage: null
+        replace: null
+        viewBag:
+            locale:
+                zh-CN:
+                    title: ''
+                    url: ''
+                ru:
+                    title: ''
+                    url: ''
+                kk:
+                    title: ''
+                    url: ''
+            isHidden: '0'
+            cssClass: show-en
+            isExternal: '0'
+    -
+        title: Locations
+        nesting: null
+        type: url
+        url: /locations
+        code: ''
+        reference: null
+        cmsPage: null
+        replace: null
+        viewBag:
+            locale:
+                zh-CN:
+                    title: ''
+                    url: ''
+                ru:
+                    title: ''
+                    url: ''
+                kk:
+                    title: ''
+                    url: ''
+            isHidden: '0'
+            cssClass: show-en
+            isExternal: '0'
+    -
+        title: Services
+        nesting: null
+        type: url
+        url: /services
+        code: ''
+        reference: null
+        cmsPage: null
+        replace: null
+        viewBag:
+            locale:
+                zh-CN:
+                    title: ''
+                    url: ''
+                ru:
+                    title: ''
+                    url: ''
+                kk:
+                    title: ''
+                    url: ''
+            isHidden: '0'
+            cssClass: show-en
+            isExternal: '0'
+    -
+        title: 'Community Impact'
+        nesting: null
+        type: url
+        url: /communities
+        code: ''
+        reference: null
+        cmsPage: null
+        replace: null
+        viewBag:
+            locale:
+                zh-CN:
+                    title: ''
+                    url: ''
+                ru:
+                    title: ''
+                    url: ''
+                kk:
+                    title: ''
+                    url: ''
+            isHidden: '0'
+            cssClass: show-en
+            isExternal: '0'
+    -
+        title: 'О нас'
+        nesting: null
+        type: url
+        url: /ru/about
+        code: ''
+        reference: null
+        cmsPage: null
+        replace: null
+        viewBag:
+            locale:
+                zh-CN:
+                    title: ''
+                    url: ''
+                ru:
+                    title: ''
+                    url: ''
+                kk:
+                    title: ''
+                    url: ''
+            isHidden: '0'
+            cssClass: show-ru
+            isExternal: '0'
+    -
+        title: Проекты
+        nesting: null
+        type: url
+        url: /ru/projects
+        code: ''
+        reference: null
+        cmsPage: null
+        replace: null
+        viewBag:
+            locale:
+                zh-CN:
+                    title: ''
+                    url: ''
+                ru:
+                    title: ''
+                    url: ''
+                kk:
+                    title: ''
+                    url: ''
+            isHidden: '0'
+            cssClass: show-ru
+            isExternal: '0'
+    -
+        title: Локации
+        nesting: null
+        type: url
+        url: /ru/locations
+        code: ''
+        reference: null
+        cmsPage: null
+        replace: null
+        viewBag:
+            locale:
+                zh-CN:
+                    title: ''
+                    url: ''
+                ru:
+                    title: ''
+                    url: ''
+                kk:
+                    title: ''
+                    url: ''
+            isHidden: '0'
+            cssClass: show-ru
+            isExternal: '0'
+    -
+        title: Услуги
+        nesting: null
+        type: url
+        url: /ru/services
+        code: ''
+        reference: null
+        cmsPage: null
+        replace: null
+        viewBag:
+            locale:
+                zh-CN:
+                    title: ''
+                    url: ''
+                ru:
+                    title: ''
+                    url: ''
+                kk:
+                    title: ''
+                    url: ''
+            isHidden: '0'
+            cssClass: show-ru
+            isExternal: '0'
+    -
+        title: 'Социальные проекты'
+        type: url
+        url: /ru/communities
+        code: ''
+        viewBag:
+            locale:
+                zh-CN:
+                    title: ''
+                    url: ''
+                ru:
+                    title: ''
+                    url: ''
+                kk:
+                    title: ''
+                    url: ''
+            isHidden: '0'
+            cssClass: show-ru
+            isExternal: '0'
+    -
+        title: 'Біз туралы'
+        nesting: null
+        type: url
+        url: /kk/about
+        code: ''
+        reference: null
+        cmsPage: null
+        replace: null
+        viewBag:
+            locale:
+                zh-CN:
+                    title: ''
+                    url: ''
+                ru:
+                    title: ''
+                    url: ''
+                kk:
+                    title: ''
+                    url: ''
+            isHidden: '0'
+            cssClass: show-kk
+            isExternal: '0'
+    -
+        title: Жобалар
+        nesting: null
+        type: url
+        url: /kk/projects
+        code: ''
+        reference: null
+        cmsPage: null
+        replace: null
+        viewBag:
+            locale:
+                zh-CN:
+                    title: ''
+                    url: ''
+                ru:
+                    title: ''
+                    url: ''
+                kk:
+                    title: ''
+                    url: ''
+            isHidden: '0'
+            cssClass: show-kk
+            isExternal: '0'
+    -
+        title: Локациялар
+        nesting: null
+        type: url
+        url: /kk/locations
+        code: ''
+        reference: null
+        cmsPage: null
+        replace: null
+        viewBag:
+            locale:
+                zh-CN:
+                    title: ''
+                    url: ''
+                ru:
+                    title: ''
+                    url: ''
+                kk:
+                    title: ''
+                    url: ''
+            isHidden: '0'
+            cssClass: show-kk
+            isExternal: '0'
+    -
+        title: Қызметтер
+        nesting: null
+        type: url
+        url: /kk/services
+        code: ''
+        reference: null
+        cmsPage: null
+        replace: null
+        viewBag:
+            locale:
+                zh-CN:
+                    title: ''
+                    url: ''
+                ru:
+                    title: ''
+                    url: ''
+                kk:
+                    title: ''
+                    url: ''
+            isHidden: '0'
+            cssClass: show-kk
+            isExternal: '0'
+    -
+        title: 'Қоғамға әсер'
+        nesting: null
+        type: url
+        url: /kk/communities
+        code: ''
+        reference: null
+        cmsPage: null
+        replace: null
+        viewBag:
+            locale:
+                zh-CN:
+                    title: ''
+                    url: ''
+                ru:
+                    title: ''
+                    url: ''
+                kk:
+                    title: ''
+                    url: ''
+            isHidden: '0'
+            cssClass: show-kk
+            isExternal: '0'
+    -
+        title: 关于我们
+        nesting: null
+        type: url
+        url: /zh-CN/about
+        code: ''
+        reference: null
+        cmsPage: null
+        replace: null
+        viewBag:
+            locale:
+                zh-CN:
+                    title: ''
+                    url: ''
+                ru:
+                    title: ''
+                    url: ''
+                kk:
+                    title: ''
+                    url: ''
+            isHidden: '0'
+            cssClass: show-zh
+            isExternal: '0'
+    -
+        title: 项目
+        nesting: null
+        type: url
+        url: /zh-CN/projects
+        code: ''
+        reference: null
+        cmsPage: null
+        replace: null
+        viewBag:
+            locale:
+                zh-CN:
+                    title: ''
+                    url: ''
+                ru:
+                    title: ''
+                    url: ''
+                kk:
+                    title: ''
+                    url: ''
+            isHidden: '0'
+            cssClass: show-zh
+            isExternal: '0'
+    -
+        title: 地点
+        nesting: null
+        type: url
+        url: /zh-CN/locations
+        code: ''
+        reference: null
+        cmsPage: null
+        replace: null
+        viewBag:
+            locale:
+                zh-CN:
+                    title: ''
+                    url: ''
+                ru:
+                    title: ''
+                    url: ''
+                kk:
+                    title: ''
+                    url: ''
+            isHidden: '0'
+            cssClass: show-zh
+            isExternal: '0'
+    -
+        title: 服务
+        nesting: null
+        type: url
+        url: /zh-CN/services
+        code: ''
+        reference: null
+        cmsPage: null
+        replace: null
+        viewBag:
+            locale:
+                zh-CN:
+                    title: ''
+                    url: ''
+                ru:
+                    title: ''
+                    url: ''
+                kk:
+                    title: ''
+                    url: ''
+            isHidden: '0'
+            cssClass: show-zh
+            isExternal: '0'
+    -
+        title: 社区影响
+        nesting: null
+        type: url
+        url: /zh-CN/communities
+        code: ''
+        reference: null
+        cmsPage: null
+        replace: null
+        viewBag:
+            locale:
+                zh-CN:
+                    title: ''
+                    url: ''
+                ru:
+                    title: ''
+                    url: ''
+                kk:
+                    title: ''
+                    url: ''
+            isHidden: '0'
+            cssClass: show-zh
+            isExternal: '0'
+name: main-menu

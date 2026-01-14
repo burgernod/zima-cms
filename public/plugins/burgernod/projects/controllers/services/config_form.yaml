@@ -1,0 +1,29 @@
+# Form Behavior Config for Services
+
+# Record name (локализация)
+name: 'burgernod.projects::lang.models.service.label'
+
+# Model Form Field configuration
+form: $/burgernod/projects/models/service/fields.yaml
+
+# Model Class name
+modelClass: Burgernod\Projects\Models\Service
+
+# Default redirect location (список)
+defaultRedirect: burgernod/projects/services
+
+# Create page
+create:
+  title: backend::lang.form.create_title
+  redirect: burgernod/projects/services/update/:id
+  redirectClose: burgernod/projects/services
+
+# Update page
+update:
+  title: backend::lang.form.update_title
+  redirect: burgernod/projects/services
+  redirectClose: burgernod/projects/services
+
+# Preview page
+preview:
+  title: backend::lang.form.preview_title

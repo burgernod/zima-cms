@@ -1,0 +1,45 @@
+title = "Locations"
+url = "/locations"
+layout = "default"
+is_hidden = 0
+
+[viewBag]
+localeUrl[zh-CN] = "/zh-CN/locations"
+localeUrl[ru]    = "/ru/locations"
+localeUrl[kk]    = "/kk/locations"
+
+[locationList]
+limit = 0
+favoritesOnly = 0
+==
+<section class="prj-list-section layout_padding">
+    <div class="container">
+        <div class="prj-list-heading">
+            <h2>{{ 'Our <span>Locations'|_ }}</span></h2>
+        </div>
+
+        <div class="prj-grid">
+            {% for location in locationList.locations %}
+                <article class="prj-card">
+                    <div class="prj-thumb">
+                        {% if location.thumb %}
+                            <img src="{{ location.thumb }}" alt="{{ location.name }}" loading="lazy">
+                            <div class="prj-thumb-overlay"></div>
+                        {% else %}
+                            <div class="prj-thumb-overlay"></div>
+                        {% endif %}
+
+                        <div class="prj-card-info">
+                            <h3>{{ location.name }}</h3>
+                            <span class="prj-location">{{ location.address }}</span>
+                        </div>
+                    </div>
+
+                    <a href="{{ 'location-details'|page({ slug: location.slug }) }}" class="prj-card-link"></a>
+                </article>
+            {% else %}
+                <p>{{ 'Locations not found'|_ }}</p>
+            {% endfor %}
+        </div>
+    </div>
+</section>

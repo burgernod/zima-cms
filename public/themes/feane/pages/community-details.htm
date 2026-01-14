@@ -1,0 +1,107 @@
+title = "Community Details"
+url = "/community/:slug"
+layout = "default"
+is_hidden = 0
+
+[viewBag]
+localeUrl[zh-CN] = "/zh-CN/community/:slug"
+localeUrl[ru] = "/ru/community/:slug"
+localeUrl[kk] = "/kk/community/:slug"
+
+[communityDetail]
+slug = "{{ :slug }}"
+==
+
+{% if community %}
+<div class="project_detail_section">
+    <!-- Hero Image Section -->
+    <div class="project_hero">
+        {% if community.image %}
+        <div class="hero_image">
+            <img src="{{ community.image.getPath() }}" alt="{{ community.title }}" loading="lazy">
+            <div class="hero_overlay"></div>
+            <div class="hero_title">
+                <h1>{{ community.title }}</h1>
+            </div>
+        </div>
+        {% endif %}
+    </div>
+
+    <!-- Info Section -->
+    <div class="container">
+        <div class="project_info layout_padding2">
+            <div class="row">
+                <div class="col-md-12 community-post">
+                    {# Рендер desc_list через partial (тот самый, с точкой для пустых значений) #}
+                    {% partial 'desc_list' entity=community %}
+
+                </div>
+            </div>
+        </div>
+
+        {# Photo gallery #}
+        {% if community.photos.count > 1 %}
+        <div class="project_gallery layout_padding2-bottom">
+            <div class="gallery_grid">
+                {% for photo in community.photos %}
+                    <div class="gallery_item">
+                        <img
+                            src="{{ photo.path }}"
+                            alt="{{ community.title }}"
+                            loading="lazy"
+                            class="js-gallery-thumb"
+                            data-full="{{ photo.path }}"
+                            data-index="{{ loop.index0 }}"
+                        >
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+        {% endif %}
+
+
+        <!-- Back to Community Impacts Button -->
+        <div class="btn_box layout_padding2 goto goto_en">
+            <a href="/communities" class="btn_back">
+                {{ 'View Communitiy Impacts'|_ }}
+            </a>
+        </div>
+
+        <div class="btn_box layout_padding2 goto goto_ru">
+            <a href="/ru/communities" class="btn_back">
+                {{ 'View Communitiy Impacts'|_ }}
+            </a>
+        </div>
+
+        <div class="btn_box layout_padding2 goto goto_kk">
+            <a href="/kk/communities" class="btn_back">
+                {{ 'View Communitiy Impacts'|_ }}
+            </a>
+        </div>
+
+        <div class="btn_box layout_padding2 goto goto_zh-cn">
+            <a href="/zh-cn/communities" class="btn_back">
+                {{ 'View Communitiy Impacts'|_ }}
+            </a>
+        </div>
+    </div>
+</div>
+
+{# Modal для просмотра изображений (тот же, что у проектов) #}
+<div id="photoModal" class="photo-modal">
+    <div class="photo-modal-backdrop"></div>
+
+    <button class="photo-modal-close" type="button">&times;</button>
+    <button class="photo-modal-nav photo-modal-prev" type="button">‹</button>
+    <button class="photo-modal-nav photo-modal-next" type="button">›</button>
+
+    <div class="photo-modal-inner">
+        <img id="photoModalImg" class="photo-modal-img" src="" alt="">
+    </div>
+</div>
+{% else %}
+<div class="container">
+    <h2>{{ 'Community impact not found'|_ }}</h2>
+    <p>{{ 'The community impact you are looking for does not exist.'|_ }}</p>
+</div>
+{% endif %}

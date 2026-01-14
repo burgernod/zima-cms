@@ -1,0 +1,86 @@
+description = "default layout"
+
+[staticMenu]
+code = "main-menu"
+
+[localePicker]
+forceUrl = 0
+==
+<!DOCTYPE html>
+<html lang="{{ app.locale }}">
+
+<head>
+  <!-- Basic -->
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <!-- Mobile Metas -->
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+  <!-- Site Metas -->
+  <meta name="author" content="" />
+  {% if project %}
+        <meta name="description" content="{{ project.description|striptags|slice(0, 160) }}">
+        <meta name="keywords" content="{{ project.title }}, {{ project.categories ? project.categories|map(category => category.name)|join(', ') : '' }}">
+        <title>{{ project.title ~ ' | Isker' }}</title>
+    {% else %}
+        <meta name="description" content="Explore all projects by ISKER Group, including construction, fabrication, and service projects.">
+        <meta name="keywords" content="ISKER Group, projects, construction, fabrication, petrochemical">
+        <title>{{ this.page.title ~ ' | Isker' }}</title>
+    {% endif %}
+  <link rel="shortcut icon" href="{{ 'assets/images/favicon.ico'|theme }}" type="">
+
+  <!-- bootstrap core css -->
+  <link rel="stylesheet" type="text/css" href="{{ 'assets/css/bootstrap.css'|theme }}" />
+
+  <!--owl slider stylesheet -->
+  <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css" />
+  <!-- nice select  -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-nice-select/1.1.0/css/nice-select.min.css" integrity="sha512-CruCP+TD3yXzlvvijET8wV5WxxEh5H8P4cmz0RFbKK6FlZ2sYl3AEsKlLPHbniXKSrDdFewhbmBK5skbdsASbQ==" crossorigin="anonymous" />
+  <!-- font awesome style -->
+  <link href="{{ 'assets/css/font-awesome.min.css'|theme }}" rel="stylesheet" />
+
+  <!-- Custom styles for this template -->
+  <link href="{{ 'assets/css/style.css'|theme }}" rel="stylesheet" />
+  <!-- responsive style -->
+  <link href="{{ 'assets/css/responsive.css'|theme }}" rel="stylesheet" />
+
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/css/lightbox.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+  {% framework extras %}
+  {% styles %}
+</head>
+  {% partial 'header' %}
+
+  <main class="page-content">
+    {% page %}
+  </main>
+
+  {% partial 'footer' %}
+
+  <!-- jQery -->
+  <script src="{{ 'assets/js/jquery-3.4.1.min.js'|theme }}"></script>
+  <!-- popper js -->
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous">
+  </script>
+  <!-- bootstrap js -->
+  <script src="{{ 'assets/js/bootstrap.js'|theme }}"></script>
+  <!-- owl slider -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js">
+  </script>
+  <!-- isotope js -->
+  <script src="https://unpkg.com/isotope-layout@3.0.4/dist/isotope.pkgd.min.js"></script>
+  <!-- nice select -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-nice-select/1.1.0/js/jquery.nice-select.min.js"></script>
+  <!-- custom js -->
+  <script src="{{ 'assets/js/custom.js'|theme }}"></script>
+  <script src="{{ 'assets/js/gallery.js'|theme }}"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/js/lightbox.min.js"></script>
+
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+
+  <script src="https://unpkg.com/@panzoom/panzoom/dist/panzoom.min.js"></script>
+
+  {% framework extras %}
+  {% scripts %}
+</body>
+
+</html>

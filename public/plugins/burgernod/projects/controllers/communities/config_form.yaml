@@ -1,0 +1,29 @@
+# Form Behavior Config for Communities
+
+# Record name (локализация)
+name: 'burgernod.projects::lang.models.community.label'
+
+# Model Form Field configuration
+form: $/burgernod/projects/models/community/fields.yaml
+
+# Model Class name
+modelClass: Burgernod\Projects\Models\Community
+
+# Default redirect location (список)
+defaultRedirect: burgernod/projects/communities
+
+# Create page
+create:
+    title: backend::lang.form.create_title
+    redirect: burgernod/projects/communities/update/:id
+    redirectClose: burgernod/projects/communities
+
+# Update page
+update:
+    title: backend::lang.form.update_title
+    redirect: burgernod/projects/communities
+    redirectClose: burgernod/projects/communities
+
+# Preview page
+preview:
+    title: backend::lang.form.preview_title

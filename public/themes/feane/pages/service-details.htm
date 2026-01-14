@@ -1,0 +1,80 @@
+title = "Service Details"
+url = "/service/:slug"
+layout = "default"
+is_hidden = 0
+
+[viewBag]
+localeUrl[zh-CN] = "/zh-CN/service/:slug"
+localeUrl[ru] = "/ru/service/:slug"
+localeUrl[kk] = "/kk/service/:slug"
+
+[serviceDetail]
+slug = "{{ :slug }}"
+==
+
+{% if service %}
+<div class="project_detail_section">
+    <!-- Hero Image Section -->
+    <div class="project_hero">
+        {% if service.image %}
+        <div class="hero_image">
+            <img src="{{ service.image.getPath() }}" alt="{{ service.title }}" loading="lazy">
+            <div class="hero_overlay"></div>
+            <div class="hero_title">
+                <h1>{{ service.title }}</h1>
+            </div>
+        </div>
+        {% endif %}
+    </div>
+
+    <div class="container">
+        <div class="project_info layout_padding2">
+            <div class="row">
+                <div class="col-md-12">
+                    {% if service.description %}
+                      <div class="project_description">
+                          {{ service.description|raw }}
+                      </div>
+                    {% endif %}
+
+                    {% partial 'desc_list' entity=service %}
+                </div>
+            </div>
+        </div>
+
+        <div class="btn_box layout_padding2 goto goto_en">
+            <a href="/services" class="btn_back">
+                {{ 'View Services'|_ }}
+            </a>
+        </div>
+
+        <div class="btn_box layout_padding2 goto goto_ru">
+            <a href="/ru/services" class="btn_back">
+                {{ 'View Services'|_ }}
+            </a>
+        </div>
+
+        <div class="btn_box layout_padding2 goto goto_kk">
+            <a href="/kk/services" class="btn_back">
+                {{ 'View Services'|_ }}
+            </a>
+        </div>
+
+        <div class="btn_box layout_padding2 goto goto_zh-cn">
+            <a href="/zh-cn/services" class="btn_back">
+                {{ 'View Services'|_ }}
+            </a>
+        </div>
+
+    </div>
+</div>
+
+{% else %}
+<div class="container">
+    <h2>{{ 'Service not found'|_ }}</h2>
+    <p>{{ 'The service you are looking for does not exist.'|_ }}</p>
+</div>
+{% endif %}
+
+
+//

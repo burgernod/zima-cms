@@ -1,0 +1,5 @@
+'1.0.0':
+    - 'First version of TwoFactor'
+'1.0.1':
+    - 'Добавление 2FA в backend_users'
+    - v1.0.1/create_two_factor_columns.php

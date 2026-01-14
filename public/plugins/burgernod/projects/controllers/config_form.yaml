@@ -1,0 +1,13 @@
+name: Project
+modelClass: Burgernod\Projects\Models\Project
+defaultRedirect: burgernod/projects/projects
+
+create:
+  redirect: burgernod/projects/projects/update/:id
+  redirectClose: burgernod/projects/projects
+
+update:
+  redirect: burgernod/projects/projects
+  redirectClose: burgernod/projects/projects
+
+form: $/burgernod/projects/models/project/fields.yaml

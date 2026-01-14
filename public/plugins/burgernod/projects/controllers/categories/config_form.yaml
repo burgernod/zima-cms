@@ -1,0 +1,31 @@
+# ===================================
+#  Form Behavior Config
+# ===================================
+
+# Record name
+name: 'burgernod.projects::lang.models.category.label'
+
+# Model Form Field configuration
+form: $/burgernod/projects/models/category/fields.yaml
+
+# Model Class name
+modelClass: Burgernod\Projects\Models\Category
+
+# Default redirect location
+defaultRedirect: burgernod/projects/categories
+
+# Create page
+create:
+    title: backend::lang.form.create_title
+    redirect: burgernod/projects/categories/update/:id
+    redirectClose: burgernod/projects/categories
+
+# Update page
+update:
+    title: backend::lang.form.update_title
+    redirect: burgernod/projects/categories
+    redirectClose: burgernod/projects/categories
+
+# Preview page
+preview:
+    title: backend::lang.form.preview_title

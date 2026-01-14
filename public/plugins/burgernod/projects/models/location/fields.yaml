@@ -1,0 +1,66 @@
+fields:
+    name:
+        label: Название
+        type: text
+        span: left
+        required: true
+
+    address:
+        label: Адрес
+        type: text
+        span: right
+        required: true
+
+    locale:
+        label: Язык (locale)
+        type: dropdown
+        span: left
+        options:
+            en: en
+            ru: ru
+            kk: kk
+            zh-CN: zh-CN
+        default: en
+
+    is_favorite:
+        label: Избранная база
+        type: switch
+        span: right
+        default: false
+        comment: Если включено, локация будет показана в блоках избранного
+
+    slug:
+        label: Slug
+        type: text
+        span: full
+        preset:
+            field: name
+            type: slug
+
+    thumb:
+        label: Картинка (список, thumbnail)
+        type: fileupload
+        mode: image
+        span: left
+        imageHeight: 260
+        imageWidth: 400
+
+    image:
+        label: Картинка (страница базы)
+        type: fileupload
+        mode: image
+        span: right
+        imageHeight: 400
+        imageWidth: 800
+
+    lat:
+        label: Широта (lat)
+        type: text
+        span: left
+        comment: "Например: 51.1605"
+
+    lng:
+        label: Долгота (lng)
+        type: text
+        span: right
+        comment: "Например: 71.4704"

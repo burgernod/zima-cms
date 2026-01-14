@@ -1,0 +1,52 @@
+title = "Projects"
+url = "/projects"
+layout = "default"
+is_hidden = 0
+
+[viewBag]
+localeUrl[zh-CN] = "/zh-CN/projects"
+localeUrl[ru] = "/ru/projects"
+localeUrl[kk] = "/kk/projects"
+
+[projectList]
+limit = 0
+favoritesOnly = 0
+==
+
+
+
+<section class="prj-list-section layout_padding">
+    <div class="container">
+        <div class="prj-list-heading">
+            <h2>{{ 'Our <span>Projects'|_ }}</span></h2>
+        </div>
+
+        <div class="prj-grid">
+            {% for project in projectList.projects %}
+                <article class="prj-card">
+                    <div class="prj-thumb">
+                        {% if project.thumb %}
+                            <img src="{{ project.thumb }}" alt="{{ project.title }} loading="lazy"">
+                            <div class="prj-thumb-overlay"></div>
+                        {% else %}
+                            <div class="prj-thumb-overlay"></div>
+                        {% endif %}
+
+                        <div class="prj-card-info">
+                            <h3>{{ project.title }}</h3>
+
+                            {% if project.location %}
+                                <span class="prj-location">{{ project.location }}</span>
+                            {% endif %}
+                        </div>
+
+                    </div>
+
+                    <a href="{{ this.page.url|replace({'/projects': '/project/' ~ project.slug}) }}" class="prj-card-link"></a>
+                </article>
+            {% else %}
+                <p>{{ 'Projects not found'|_ }}</p>
+            {% endfor %}
+        </div>
+    </div>
+</section>

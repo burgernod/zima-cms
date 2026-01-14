@@ -1,0 +1,107 @@
+{# expected entity has desc_list (json) and photos (attachMany) #}
+{% set list = entity.desc_list|default([]) %}
+
+{% if list and list|length %}
+<div class="project_desc_wrap">
+
+    {% for group in list %}
+        {% set rawTitle = group.title|default('') %}
+        {% set items = group.items|default([]) %}
+
+        {% if items|length %}
+
+            {# определяем тип группы #}
+            {% set isList = rawTitle ends with '(List)' %}
+            {% set isDouble = rawTitle ends with '(Double)' %}
+
+            {# убираем технические суффиксы из заголовка #}
+            {% set cleanTitle = rawTitle
+                |replace({'(List)': ''})
+                |replace({'(Double)': ''})
+                |trim
+            %}
+
+            <div class="project_desc_group layout_padding2">
+
+                {% if cleanTitle and cleanTitle != '(Hidden)' %}
+                    <h4 class="project_desc_group_title">{{ cleanTitle }}</h4>
+                {% endif %}
+
+                {# =============== 1) DOUBLE — две колонки =============== #}
+                {% if isDouble %}
+                    {% set half = (items|length / 2)|round(0, 'ceil') %}
+
+                    <div class="row">
+                        <div class="col-md-6">
+                            <ul class="project_desc_column">
+                                {% for item in items|slice(0, half) %}
+                                    {% set label = item.label|default('') %}
+                                    {% set value = item.value is defined ? item.value : null %}
+                                    <li class="project_desc_item">
+                                        {% if value %}
+                                            <strong>{{ label }}:</strong> {{ value }}
+                                        {% else %}
+                                            <span>{{ label }}</span>
+                                        {% endif %}
+                                    </li>
+                                {% endfor %}
+                            </ul>
+                        </div>
+
+                        <div class="col-md-6">
+                            <ul class="project_desc_column">
+                                {% for item in items|slice(half) %}
+                                    {% set label = item.label|default('') %}
+                                    {% set value = item.value is defined ? item.value : null %}
+                                    <li class="project_desc_item">
+                                        {% if value %}
+                                            <strong>{{ label }}:</strong> {{ value }}
+                                        {% else %}
+                                            <span>{{ label }}</span>
+                                        {% endif %}
+                                    </li>
+                                {% endfor %}
+                            </ul>
+                        </div>
+                    </div>
+
+                {# =============== 2) LIST — простой список =============== #}
+                {% elseif isList %}
+                    <ul class="project_desc_column">
+                        {% for item in items %}
+                            {% set label = item.label|default('') %}
+                            {% set value = item.value is defined ? item.value : null %}
+                            <li class="project_desc_item">
+                                {% if value %}
+                                    <strong>{{ label }}:</strong> {{ value }}
+                                {% else %}
+                                    <span>{{ label }}</span>
+                                {% endif %}
+                            </li>
+                        {% endfor %}
+                    </ul>
+
+                {# =============== 3) DEFAULT — обычный вывод =============== #}
+                {% else %}
+                    <ul class="project_desc_column">
+                        {% for item in items %}
+                            {% set label = item.label|default('') %}
+                            {% set value = item.value is defined ? item.value : null %}
+                            <li class="project_desc_item">
+                                {% if value %}
+                                    <strong>{{ label }}:</strong> {{ value }}
+                                {% else %}
+                                    <span>{{ label }}</span>
+                                {% endif %}
+                            </li>
+                        {% endfor %}
+                    </ul>
+                {% endif %}
+
+            </div>
+
+        {% endif %}
+    {% endfor %}
+
+</div>
+{% endif %}

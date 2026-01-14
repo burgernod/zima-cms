@@ -1,0 +1,41 @@
+1.0.1:
+    - 'Initialize plugin.'
+1.0.2:
+    - 'Create Projects Table'
+    - v1.0.2/create_projects_table.php
+1.0.3:
+    - 'Update Projects Table'
+    - v1.0.3/update_projects_table.php
+1.0.4:
+    - 'Create Categories Table'
+    - v1.0.4/create_categories_table.php
+1.0.5:
+    - 'Add locale field to projects'
+    - v1.0.5/add_locale_to_projects_table.php
+1.0.6:
+    - 'Add is_favorite and desc_list fields to projects'
+    - v1.0.6/add_favorite_and_desc_list_to_projects.php
+1.0.7:
+    - 'Create locations table'
+    - v1.0.7/create_locations_table.php
+1.0.8:
+    - 'Add locale, isFavorite, slug columns to locations table'
+    - v1.0.8/add_locale_and_favorite_slug_to_locations.php
+1.0.9:
+    - 'Updated table burgernod_projects_projects'
+    - builder_table_update_burgernod_projects_projects.php
+1.0.10:
+    - 'Created table burgernod_projects_services'
+    - builder_table_create_burgernod_projects_services.php
+1.0.11:
+    - 'Updated table burgernod_projects_services'
+    - builder_table_update_burgernod_projects_services.php
+1.0.12:
+    - 'Created table burgernod_projects_communities'
+    - builder_table_create_burgernod_projects_communities.php
+1.0.13:
+    - 'Updated table burgernod_projects_services'
+    - builder_table_update_burgernod_projects_services_2.php
+1.0.14:
+    - 'Updated table burgernod_projects_services'
+    - builder_table_update_burgernod_projects_services_3.php

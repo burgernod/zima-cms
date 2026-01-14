@@ -1,0 +1,15 @@
+<h1>{{ project.title }}</h1>
+<h2>Client</h2>
+<p>{{ project.client }}</p>
+<h2>Location</h2>
+<p>{{ project.location }}</p>
+<h2>Categories</h2>
+<ul>
+    {% for category in project.categories %}
+        <li>{{ category.name }}</li>
+    {% endfor %}
+</ul>
+<p>{{ project.description }}</p>
+{% for photo in project.photos %}
+    <img src="{{ photo.path }}" alt="{{ project.title }}">
+{% endfor %}

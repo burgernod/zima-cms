@@ -1,0 +1,22 @@
+# ===================================
+#  Form Behavior Config
+# ===================================
+
+name: Bases
+modelClass: Burgernod\Projects\Models\Location
+form: $/burgernod/projects/models/location/fields.yaml
+
+create:
+    title: Создать базу
+    redirect: burgernod/projects/locations/update/:id
+    redirectClose: burgernod/projects/locations
+
+update:
+    title: Редактировать базу
+    redirect: burgernod/projects/locations
+    redirectClose: burgernod/projects/locations
+
+preview:
+    title: Просмотр базы
+
+defaultRedirect: burgernod/projects/locations

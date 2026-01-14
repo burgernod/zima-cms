@@ -1,0 +1,10 @@
+title: Projects
+modelClass: Burgernod\Projects\Models\Project
+list: $/burgernod/projects/models/project/columns.yaml
+recordUrl: burgernod/projects/projects/update/:id
+
+toolbar:
+  buttons: listToolbar
+
+search:
+  prompt: Find projects

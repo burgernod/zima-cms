@@ -1,0 +1,39 @@
+# ===================================
+#  List Behavior Config
+# ===================================
+
+# Model List Column configuration
+list: $/burgernod/projects/models/community/columns.yaml
+
+# Model Class name
+modelClass: Burgernod\Projects\Models\Community
+
+# List Title
+title: 'burgernod.projects::lang.models.community.label_plural'
+
+# Link URL for each record
+recordUrl: burgernod/projects/communities/update/:id
+
+# Message to display if the list is empty
+noRecordsMessage: backend::lang.list.no_records
+
+# Records to display per page
+recordsPerPage: 20
+
+# Display page numbers with pagination
+showPageNumbers: true
+
+# Displays the list column set up button
+showSetup: true
+
+# Displays the sorting link on each column
+showSorting: true
+
+# Display checkboxes
+showCheckboxes: true
+
+# Toolbar widget configuration
+toolbar:
+    buttons: list_toolbar
+    search:
+        prompt: backend::lang.list.search_prompt

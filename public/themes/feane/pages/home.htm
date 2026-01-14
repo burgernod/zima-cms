@@ -1,0 +1,349 @@
+title = "Home"
+url = "/"
+layout = "default"
+is_hidden = 0
+
+[viewBag]
+localeUrl[zh-CN] = "/zh-CN"
+localeUrl[ru] = "/ru"
+localeUrl[kk] = "/kk"
+localeUrl[en] = "/"
+
+[projectList]
+limit = 3
+favoritesOnly = 1
+
+[locationList featuredLocations]
+limit = 3
+favoritesOnly = 1
+==
+<!-- slider section -->
+    <section class="slider_section ">
+      <div id="customCarousel1" class="carousel slide" data-ride="carousel">
+        <div class="carousel-inner">
+          <div class="carousel-item active">
+            <div class="container ">
+              <div class="row">
+                <div class="col-md-7 col-lg-6 ">
+                  <div class="detail-box">
+                    <h1>
+                      {{ 'Who We Are'|_ }}
+                    </h1>
+                    <p>
+                      {{ 'ISKER Group is a Kazakhstan based conglomerate comprising of a diverse range of construction and engineering projects and services in the oil & gas sector including port operations, waste management, property, shipping, logistics, catering and leisure sectors.'|_ }}
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="carousel-item ">
+            <div class="container ">
+              <div class="row">
+                <div class="col-md-7 col-lg-6 ">
+                  <div class="detail-box">
+                    <h1>
+                      {{ 'Professional Team'|_ }}
+                    </h1>
+                    <p>
+                      {{ 'From senior management down, ISKER international team members are not only experts in their fields but also have a full understanding in the environments that they operate within. We encourage a collaborative and entrepreneurial culture, constantly striving to find better solutions to complex challenges.'|_ }}
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="carousel-item">
+            <div class="container ">
+              <div class="row">
+                <div class="col-md-7 col-lg-6 ">
+                  <div class="detail-box">
+                    <h1>
+                      {{ 'Customized Approach'|_ }}
+                    </h1>
+                    <p>
+                      {{ 'Our portfolio boasts an impressive range of major projects and demonstrates our long-standing relationship with major clients. Over the years, we have acquired the necessary experience and qualifications for tendering major projects for both local and international corporations.'|_ }}
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="container">
+          <ol class="carousel-indicators">
+            <li data-target="#customCarousel1" data-slide-to="0" class="active"></li>
+            <li data-target="#customCarousel1" data-slide-to="1"></li>
+            <li data-target="#customCarousel1" data-slide-to="2"></li>
+          </ol>
+        </div>
+      </div>
+
+    </section>
+    <!-- end slider section -->
+  </div>
+
+  <!-- food section -->
+
+  <section class="prj-list-section layout_padding">
+    <div class="container">
+        <div class="prj-list-heading">
+            <h2>{{ 'Featured <span>Projects'|_ }}</span></h2>
+        </div>
+
+        <div class="prj-grid">
+            {% for project in projectList.projects %}
+                <article class="prj-card">
+                    <div class="prj-thumb">
+                        {% if project.thumb %}
+                            <img src="{{ project.thumb }}" alt="{{ project.title }} loading="lazy"">
+                            <div class="prj-thumb-overlay"></div>
+                        {% else %}
+                            <div class="prj-thumb-overlay"></div>
+                        {% endif %}
+
+                        <div class="prj-card-info">
+                            <h3>{{ project.title }}</h3>
+                            {% if project.location %}
+                                <span class="prj-location">{{ project.location }}</span>
+                            {% endif %}
+                        </div>
+                    </div>
+
+                    <a href="{{ this.page.url|replace({'/': '/project/' ~ project.slug }) }}" class="prj-card-link en-project-home"></a>
+
+                    <a href="{{ this.page.url ~ '/project/' ~ project.slug }}" class="prj-card-link project-home"></a>
+                </article>
+            {% else %}
+                <p>{{ 'Projects not found.'|_ }}</p>
+            {% endfor %}
+        </div>
+
+                <!-- Back to Projects Button -->
+        <!-- Back to Projects Button -->
+        <div class="btn_box layout_padding2 goto goto_en">
+            <a href="/projects" class="btn_back">
+                {{ 'View Our Projects'|_ }}
+            </a>
+        </div>
+
+        <div class="btn_box layout_padding2 goto goto_ru">
+            <a href="/ru/projects" class="btn_back">
+                {{ 'View Our Projects'|_ }}
+            </a>
+        </div>
+
+        <div class="btn_box layout_padding2 goto goto_kk">
+            <a href="/kk/projects" class="btn_back">
+                {{ 'View Our Projects'|_ }}
+            </a>
+        </div>
+
+        <div class="btn_box layout_padding2 goto goto_zh-cn">
+            <a href="/zh-cn/projects" class="btn_back">
+                {{ 'View Our Projects'|_ }}
+            </a>
+        </div>
+    </div>
+</section>
+  <!-- end food section -->
+
+  <!-- about section -->
+
+  <section class="about_section layout_padding">
+    <div class="container  ">
+
+      <div class="row">
+        <div class="col-md-6 ">
+          <div class="img-box">
+            <img src="{{ 'assets/images/1_gm_optimized.avif'|theme }}" alt="">
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="detail-box">
+            <div class="heading_container">
+              <div class="heading_container">
+                <h2>
+                  {{ 'About ISKER Group'|_ }}
+                </h2>
+              </div>
+              <p>
+                {{ 'ISKER Group is a leading multidisciplinary company delivering integrated solutions across construction, engineering, manufacturing, logistics, port operations and property services in Kazakhstan and beyond. <br>With over 4,000 professionals, we combine strong governance, client-focused delivery and sustainable business practices to create long-term value for our clients, communities and partners.'|_ }}
+              </p>
+
+              <!-- Back to Projects Button -->
+              <div class="btn_box layout_padding2 goto goto_en">
+                  <a href="/about" class="btn_back">
+                      {{ 'Read more'|_ }}
+                  </a>
+              </div>
+
+              <div class="btn_box layout_padding2 goto goto_ru">
+                  <a href="/ru/about" class="btn_back">
+                      {{ 'Read more'|_ }}
+                  </a>
+              </div>
+
+              <div class="btn_box layout_padding2 goto goto_kk">
+                  <a href="/kk/about" class="btn_back">
+                      {{ 'Read more'|_ }}
+                  </a>
+              </div>
+
+              <div class="btn_box layout_padding2 goto goto_zh-cn">
+                  <a href="/zh-cn/about" class="btn_back">
+                      {{ 'Read more'|_ }}
+                  </a>
+              </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+{# <section class="prj-list-section layout_padding">
+    <div class="container">
+        <div class="prj-list-heading">
+            <h2>{{ 'Featured <span> Locations'|_ }}</span></h2>
+        </div>
+
+        <div class="prj-grid">
+            {% for loc in featuredLocations.locations %}
+                <article class="prj-card">
+                    <div class="prj-thumb">
+                        <img src="{{ loc.thumb }}" alt="{{ loc.name }}">
+                        <div class="prj-thumb-overlay"></div>
+                    </div>
+
+                    <div class="prj-card-info">
+                        <h3>{{ loc.name }}</h3>
+                        <span class="prj-location">{{ loc.address }}</span>
+                    </div>
+
+                    <a href="{{ 'location-details'|page({ slug: loc.slug }) }}" class="prj-card-link"></a>
+                </article>
+            {% endfor %}
+        </div>
+    </div>
+</section> #}
+
+<!-- COMPONENT: CERTIFIED BY -->
+<section class="certified-section layout_padding">
+  <div class="container">
+    <div class="heading_container heading_center">
+      <h2>{{ 'CERTIFIED <span>BY'|_ }}</span></h2>
+    </div>
+
+    <div class="certified-grid">
+      <div class="certified-item">
+        <img src="{{ 'assets/images/cert1.png'|theme }}" alt="TCL">
+      </div>
+      <div class="certified-item">
+        <img src="{{ 'assets/images/cert2.png'|theme }}" alt="Intertek">
+      </div>
+      <div class="certified-item">
+        <img src="{{ 'assets/images/cert3.png'|theme }}" alt="IQNet">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- COMPONENT: KEY PRINCIPLES -->
+<section class="principles-section layout_padding">
+  <div class="container">
+    <div class="heading_container heading_center">
+      <h2>{{ 'KEY <span>PRINCIPLES'|_ }}</span></h2>
+    </div>
+
+    <div class="principles-grid">
+      <article class="principle-card">
+        <div class="principle-icon">
+          <img src="{{ 'assets/images/big01.png'|theme }}" alt="">
+        </div>
+        <h4>{{ 'SAFETY'|_ }}</h4>
+        <p>{{ 'Safety is the most important of our core values. It is our first priority.'|_ }}</p>
+      </article>
+
+      <article class="principle-card">
+        <div class="principle-icon">
+          <img src="{{ 'assets/images/big02.png'|theme }}" alt="">
+        </div>
+        <h4>{{ 'COMMUNITY'|_ }}</h4>
+        <p>{{ 'ISKER Group is deeply involved in local charities and community support.'|_ }}</p>
+      </article>
+
+      <article class="principle-card">
+        <div class="principle-icon">
+          <img src="{{ 'assets/images/big03.png'|theme }}" alt="">
+        </div>
+        <h4>{{ 'SUSTAINABILITY'|_ }}</h4>
+        <p>{{ 'Long-standing commitment to quality, diversity and responsible growth.'|_ }}</p>
+      </article>
+
+      <article class="principle-card">
+        <div class="principle-icon">
+          <img src="{{ 'assets/images/big04.png'|theme }}" alt="">
+        </div>
+        <h4>{{ 'INTEGRITY'|_ }}</h4>
+        <p>{{ 'Unwavering commitment to honesty, ethics and transparency.'|_ }}</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- COMPONENT: KPI INFOGRAPHIC -->
+<section class="kpi-section">
+  <div class="container kpi-wrapper">
+    <div class="kpi-heading">
+      <h2>
+        {{ 'Leading the way in building, service and manufacturing'|_ }}
+      </h2>
+    </div>
+
+    <div class="kpi-grid">
+      <div class="kpi-item">
+        <img src="{{ 'assets/images/big05.png'|theme }}" alt="">
+        <div class="kpi-info">
+          <span class="kpi-value">25 000 000+</span>
+          <span class="kpi-label">{{ 'Man-hours'|_ }}</span>
+        </div>
+      </div>
+
+      <div class="kpi-item">
+        <img src="{{ 'assets/images/big06.png'|theme }}" alt="">
+        <div class="kpi-info">
+          <span class="kpi-value">4 000+</span>
+          <span class="kpi-label">{{ 'Workers Employed'|_ }}</span>
+        </div>
+      </div>
+
+      <div class="kpi-item">
+        <img src="{{ 'assets/images/big07.png'|theme }}" alt="">
+        <div class="kpi-info">
+          <span class="kpi-value">12+</span>
+          <span class="kpi-label">{{ 'Awards Won'|_ }}</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- COMPONENT: OUR CLIENTS -->
+<section class="clients-section layout_padding">
+  <div class="container">
+    <div class="heading_container">
+      <h2>{{ 'OUR <span>CLIENTS'|_ }}</span></h2>
+    </div>
+
+    <div class="clients-grid">
+      <div class="client-logo"><img src="{{ 'assets/images/client-01-1.png'|theme }}"><a href="https://tengizchevroil.com/" class="client-link" target="_blank"></a></div>
+      <div class="client-logo"><img src="{{ 'assets/images/client-02-1.png'|theme }}"><a href="https://www.ncoc.kz/" class="client-link" target="_blank"></a></div>
+      <div class="client-logo"><img src="{{ 'assets/images/client-03-1.png'|theme }}"><a href="https://www.bechtel.com/" class="client-link" target="_blank"></a></div>
+      <div class="client-logo"><img src="{{ 'assets/images/client-04-1.png'|theme }}"><a href="http://www.sinopec.com/" class="client-link" target="_blank"></a></div>
+      <div class="client-logo"><img src="{{ 'assets/images/client-05-1.png'|theme }}"><a href="https://www.slb.com/" class="client-link" target="_blank"></a></div>
+      <div class="client-logo"><img src="{{ 'assets/images/client-06-1.png'|theme }}"><a href="https://www.halliburton.com/" class="client-link" target="_blank"></a></div>
+      <div class="client-logo"><img src="{{ 'assets/images/client-77-1.png'|theme }}"><a href="https://www.kpo.kz/ru" class="client-link" target="_blank"></a></div>
+    </div>
+  </div>
+</section>

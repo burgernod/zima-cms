@@ -1,0 +1,6 @@
+plugin:
+    name: 'burgernod.projects::lang.plugin.name'
+    description: 'burgernod.projects::lang.plugin.description'
+    author: burgernod
+    icon: oc-icon-adjust
+    homepage: ''

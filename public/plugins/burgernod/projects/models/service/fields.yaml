@@ -1,0 +1,64 @@
+fields:
+    title:
+        label: Title
+        span: full
+        required: true
+        type: text
+    locale:
+        label: Language
+        type: dropdown
+        options: getLocaleOptions
+        default: en
+        span: right
+        required: true
+        comment: 'Select project language'
+    slug:
+        label: Slug
+        span: full
+        preset: title
+        required: true
+        type: text
+    desc_list:
+        label: 'Alternate Description'
+        prompt: 'Add new item'
+        style: default
+        span: full
+        type: repeater
+        form:
+            fields:
+                title:
+                    label: Heading
+                    span: full
+                    type: text
+                    comment: 'Type "(Hidden)" to make it hidden'
+                items:
+                    label: Items
+                    prompt: 'Add new item'
+                    style: default
+                    span: full
+                    type: repeater
+                    form:
+                        fields:
+                            label:
+                                label: Label
+                                span: left
+                                type: text
+                            value:
+                                label: Value
+                                span: right
+                                type: text
+    thumb:
+        label: Картинка (thumbnail)
+        type: fileupload
+        mode: image
+        span: left
+        imageHeight: 260
+        imageWidth: 400
+
+    image:
+        label: Картинка (страница)
+        type: fileupload
+        mode: image
+        span: right
+        imageHeight: 400
+        imageWidth: 800

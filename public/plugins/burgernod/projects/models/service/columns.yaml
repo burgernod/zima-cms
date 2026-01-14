@@ -1,0 +1,23 @@
+columns:
+    id:
+        label: id
+        type: number
+        searchable: false
+        sortable: true
+    title:
+        label: title
+        type: text
+        invisible: true
+        sortable: true
+    slug:
+        label: Slug
+        searchable: true
+        sortable: true
+    locale:
+        label: Language
+        options:
+            en: EN
+            ru: RU
+            kk: KZ
+            zh-CN: CN
+        width: 80px

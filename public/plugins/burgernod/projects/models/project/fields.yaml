@@ -1,0 +1,136 @@
+fields:
+    title:
+        label: Title
+        type: text
+        span: full
+        required: true
+    locale:
+        label: Language
+        type: dropdown
+        options: getLocaleOptions
+        default: en
+        span: right
+        required: true
+        comment: 'Select project language'
+    slug:
+        label: Slug
+        type: text
+        preset: title
+        span: auto
+        required: true
+    is_favorite:
+        label: 'Избранный проект'
+        span: auto
+        type: switch
+        default: false
+        comment: 'Если включено, проект попадает на главную'
+    description:
+        label: Description
+        size: large
+        span: full
+        required: false
+        type: textarea
+    desc_list:
+        label: 'Альтернативное описание'
+        span: full
+        type: repeater
+        prompt: 'Добавить строку'
+        form:
+            fields:
+                title:
+                    label: 'Заголовок категории'
+                    span: full
+                    type: text
+                    comment: 'Введите "(Hidden)", чтобы не показывать заголовок'
+                items:
+                    label: 'Пункты списка'
+                    type: repeater
+                    prompt: 'Добавить пункт'
+                    span: full
+                    form:
+                        fields:
+                            label:
+                                label: Параметр
+                                span: left
+                                type: text
+                            value:
+                                label: Значение
+                                span: right
+                                type: text
+    client:
+        label: Client
+        type: text
+        span: auto
+        required: false
+        placeholder: 'Enter client name (optional)'
+    location:
+        label: Location
+        type: text
+        span: auto
+        required: false
+        placeholder: 'Enter location (optional)'
+    budget:
+        label: Budget
+        type: text
+        span: auto
+        required: false
+        placeholder: 'e.g., $5M, €10M (optional)'
+        comment: 'Enter project budget in any format'
+    year:
+        label: Year
+        type: number
+        span: auto
+        required: false
+        placeholder: 'e.g., 2024'
+    area:
+        label: Area
+        type: text
+        span: auto
+        required: false
+        placeholder: 'e.g., 50,000 m²'
+        comment: 'Total project area'
+    categories:
+        label: Categories
+        type: relation
+        span: full
+        select: name
+    thumb:
+        label: Картинка (thumbnail)
+        type: fileupload
+        mode: image
+        span: left
+        imageHeight: 260
+        imageWidth: 400
+    photos:
+        label: Картинка (страница)
+        type: fileupload
+        mode: image
+        span: right
+        imageHeight: 400
+        imageWidth: 800
+    lat:
+        label: 'Широта (lat)'
+        type: text
+        span: left
+        comment: 'Например: 51.1605'
+    lng:
+        label: 'Долгота (lng)'
+        type: text
+        span: right
+        comment: 'Например: 71.4704'
+secondaryTabs:
+    fields:
+        created_at:
+            label: Created
+            type: datepicker
+            mode: datetime
+            disabled: true
+            span: auto
+            tab: Meta
+        updated_at:
+            label: Updated
+            type: datepicker
+            mode: datetime
+            disabled: true
+            span: auto
+            tab: Meta

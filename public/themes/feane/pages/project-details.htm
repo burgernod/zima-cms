@@ -1,0 +1,247 @@
+title = "Project Details"
+url = "/project/:slug"
+layout = "default"
+is_hidden = 0
+
+[viewBag]
+localeUrl[zh-CN] = "/zh-CN/project/:slug"
+localeUrl[ru] = "/ru/project/:slug"
+localeUrl[kk] = "/kk/project/:slug"
+
+[projectDetail]
+slug = "{{ :slug }}"
+==
+{% if project %}
+<div class="project_detail_section">
+    <!-- Hero Image Section -->
+    <div class="project_hero">
+        {% if project.photos.count > 0 %}
+        <div class="hero_image">
+            <img src="{{ project.photos.first.path }}" alt="{{ project.title }}" loading="lazy">
+            <div class="hero_overlay"></div>
+            <div class="hero_title">
+                <h1>{{ project.title }}</h1>
+            </div>
+        </div>
+        {% endif %}
+    </div>
+
+    <!-- Project Info Section -->
+    <div class="container">
+        <div class="project_info layout_padding2">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="project_description">
+                        {{ project.description|raw }}
+                    </div>
+
+                    {% if project.desc_list %}
+                        {% for group in project.desc_list %}
+                            {% set title = group.title|default('') %}
+                            {% set items = group.items|default([]) %}
+
+                            {% if items|length > 0 %}
+                                {% set total = items|length %}
+                                {% set half = (total / 2)|round(0, 'ceil') %}
+
+                                <div class="project_desc_group layout_padding2">
+                                    {# заголовок, кроме "(Hidden)" #}
+                                    {% if title and title != '(Hidden)' %}
+                                        <h4 class="project_desc_group_title">{{ title }}</h4>
+                                    {% endif %}
+
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <ul class="project_desc_column">
+                                                {% for item in items|slice(0, half) %}
+                                                    {% set label = item.label|default('') %}
+                                                    {% set value = item.value is defined ? item.value : null %}
+
+                                                    <li class="project_desc_item">
+                                                        {% if value %}
+                                                            <strong>{{ label }}:</strong> {{ value }}
+                                                        {% else %}
+                                                            <span>{{ label }}</span>
+                                                        {% endif %}
+                                                    </li>
+                                                {% endfor %}
+                                            </ul>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <ul class="project_desc_column">
+                                                {% for item in items|slice(half) %}
+                                                    {% set label = item.label|default('') %}
+                                                    {% set value = item.value is defined ? item.value : null %}
+
+                                                    <li class="project_desc_item">
+                                                        {% if value %}
+                                                            <strong>{{ label }}:</strong> {{ value }}
+                                                        {% else %}
+                                                            <span>{{ label }}</span>
+                                                        {% endif %}
+                                                    </li>
+                                                {% endfor %}
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            {% endif %}
+                        {% endfor %}
+                    {% endif %}
+
+                    <!-- Project Details Grid -->
+                    {% if project.location or project.area or project.year or project.client or project.budget or project.categories %}
+                    <div class="project_meta">
+                        <div class="row">
+                            {% if project.location %}
+                            <div class="col-md-6 meta_item">
+                                <h5>{{ 'Location'|_ }}</h5>
+                                <p>{{ project.location }}</p>
+                            </div>
+                            {% endif %}
+                            
+                            {% if project.area %}
+                            <div class="col-md-6 meta_item">
+                                <h5>{{ 'Gross Area'|_ }}</h5>
+                                <p>{{ project.area }}</p>
+                            </div>
+                            {% endif %}
+                            
+                            {% if project.year %}
+                            <div class="col-md-6 meta_item">
+                                <h5>{{ 'Completion Year'|_ }}</h5>
+                                <p>{{ project.year }}</p>
+                            </div>
+                            {% endif %}
+                            
+                            {% if project.client %}
+                            <div class="col-md-6 meta_item">
+                                <h5>{{ 'Client'|_ }}</h5>
+                                <p>{{ project.client }}</p>
+                            </div>
+                            {% endif %}
+                            
+                            {% if project.budget %}
+                            <div class="col-md-6 meta_item">
+                                <h5>{{ 'Budget'|_ }}</h5>
+                                <p>{{ project.budget }}</p>
+                            </div>
+                            {% endif %}
+                            
+                            {% if project.categories and project.categories|length > 0 %}
+                            <div class="col-md-6 meta_item">
+                                <h5>{{ 'Category'|_ }}</h5>
+                                <p>
+                                    {% for category in project.categories %}
+                                        {{ category.name }}{% if not loop.last %}, {% endif %}
+                                    {% endfor %}
+                                </p>
+                            </div>
+                            {% endif %}
+                        </div>
+                    </div>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+
+        <!-- Photo Gallery -->
+        {% if project.photos.count > 1 %}
+        <div class="project_gallery layout_padding2-bottom">
+            <div class="gallery_grid">
+                {% for photo in project.photos %}
+                    <div class="gallery_item">
+                        <img
+                            src="{{ photo.path }}"
+                            alt="{{ project.title }}"
+                            loading="lazy"
+                            class="js-gallery-thumb"
+                            data-full="{{ photo.path }}"
+                            data-index="{{ loop.index0 }}"
+                        >
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+        {% endif %}
+
+        {% if project.lat and project.lng %}
+            <div id="projectMap"
+                data-lat="{{ project.lat }}"
+                data-lng="{{ project.lng }}"
+                style="width: 100%; height: 400px; margin-top: 20px; border-radius: 5px; overflow: hidden;">
+            </div>
+        {% endif %}
+
+        <!-- Back to Projects Button -->
+        <div class="btn_box layout_padding2 goto goto_en">
+            <a href="/projects" class="btn_back">
+                {{ 'View Our Projects'|_ }}
+            </a>
+        </div>
+
+        <div class="btn_box layout_padding2 goto goto_ru">
+            <a href="/ru/projects" class="btn_back">
+                {{ 'View Our Projects'|_ }}
+            </a>
+        </div>
+
+        <div class="btn_box layout_padding2 goto goto_kk">
+            <a href="/kk/projects" class="btn_back">
+                {{ 'View Our Projects'|_ }}
+            </a>
+        </div>
+
+        <div class="btn_box layout_padding2 goto goto_zh-cn">
+            <a href="/zh-cn/projects" class="btn_back">
+                {{ 'View Our Projects'|_ }}
+            </a>
+        </div>
+
+    </div>
+</div>
+<div id="photoModal" class="photo-modal">
+    <div class="photo-modal-backdrop"></div>
+
+    <button class="photo-modal-close" type="button">&times;</button>
+    <button class="photo-modal-nav photo-modal-prev" type="button">‹</button>
+    <button class="photo-modal-nav photo-modal-next" type="button">›</button>
+
+    <div class="photo-modal-inner">
+        <img id="photoModalImg" class="photo-modal-img" src="" alt="">
+    </div>
+</div>
+{% else %}
+<div class="container">
+    <h2>{{ 'Project not found'|_ }}</h2>
+    <p>{{ 'The project you are looking for does not exist.'|_ }}</p>
+</div>
+{% endif %}
+
+{% put scripts %}
+    {% if project and project.lat and project.lng %}
+        <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            var mapEl = document.getElementById('projectMap');
+            if (!mapEl) return;
+
+            var lat = parseFloat(mapEl.dataset.lat);
+            var lng = parseFloat(mapEl.dataset.lng);
+
+            var map = L.map(mapEl).setView([lat, lng], 13);
+
+            L.tileLayer(
+                'https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}',
+                {
+                    maxZoom: 19,
+                    attribution: 'Tiles © Esri'
+                }
+            ).addTo(map);
+
+            L.marker([lat, lng]).addTo(map)
+                .bindPopup('{{ project.title|e('js') }}')
+                .openPopup();
+        });
+        </script>
+    {% endif %}
+{% endput %}
